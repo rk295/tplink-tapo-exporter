@@ -1,10 +1,10 @@
-module github.com/fffonion/tplink-plug-exporter
+module github.com/rk295/tplink-plug-exporter
 
 go 1.18
 
 require (
-	github.com/mitchellh/mapstructure v1.1.2
 	github.com/prometheus/client_golang v1.13.0
+	github.com/rk295/tapo-go v0.0.8
 	github.com/sirupsen/logrus v1.7.0
 )
 
@@ -13,6 +13,7 @@ require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
+	github.com/mergermarket/go-pkcs7 v0.0.0-20170926155232-153b18ea13c9 // indirect
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.37.0 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect
