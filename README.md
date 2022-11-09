@@ -7,7 +7,7 @@ Export TP-Link Tapo Smart Plug metrics to grafana dashboard
 Download from [releases](https://github.com/rk295/tplink-tapo-exporter/releases) or run from docker
 
 ```
-docker run -d -p 9233:9233 rk295/tplink-tapo-exporter
+docker run -d -p 9234:9234 rk295/tplink-tapo-exporter
 ```
 
 ### Usage
@@ -18,7 +18,7 @@ Use the -h flag to see full usage:
 $ tplink-tapo-exporter -h
 Usage of ./tplink-tapo-exporter:
   -metrics.listen-addr string
-        listen address for tplink-tapo exporter (default ":9233")
+        listen address for tplink-tapo exporter (default ":9234")
 ```
 
 <!-- WIP! -->
@@ -49,14 +49,14 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         # IP of the exporter
-        replacement: localhost:9233
+        replacement: localhost:9234
 
 # scrape tapo_exporter itself
   - job_name: 'tapo_exporter'
     static_configs:
       - targets:
         # IP of the exporter
-        - localhost:9233
+        - localhost:9234
 ```
 
 ## Docker Build Instructions

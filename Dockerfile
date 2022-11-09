@@ -9,5 +9,5 @@ RUN GOOS=$GOOS GOARCH=$GOARCH CGO_ENABLED=0 go build main.go
 
 FROM alpine:3.12.1
 COPY --from=builder /src/main /tplink-tapo-exporter
-EXPOSE 9233
+EXPOSE 9234
 ENTRYPOINT ["/tplink-tapo-exporter"]
