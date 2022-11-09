@@ -6,11 +6,11 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/rk295/tplink-plug-exporter/exporter"
+	"github.com/rk295/tplink-tapo-exporter/exporter"
 )
 
 func main() {
-	var metricsAddr = flag.String("metrics.listen-addr", ":9233", "listen address for tplink-plug exporter")
+	var metricsAddr = flag.String("metrics.listen-addr", ":9233", "listen address for tplink-tapo exporter")
 
 	flag.Parse()
 	s := exporter.NewHttpServer()

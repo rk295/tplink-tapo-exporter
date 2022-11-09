@@ -1,4 +1,4 @@
-module github.com/rk295/tplink-plug-exporter
+module github.com/rk295/tplink-tapo-exporter
 
 go 1.18
 

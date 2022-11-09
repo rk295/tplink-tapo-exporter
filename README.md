@@ -1,13 +1,13 @@
-# tplink-tapo-plug-exporter
+# tplink-tapo-exporter
 
 Export TP-Link Tapo Smart Plug metrics to grafana dashboard
 
 ## Install
 
-Download from [releases](https://github.com/rk295/tplink-plug-exporter/releases) or run from docker
+Download from [releases](https://github.com/rk295/tplink-tapo-exporter/releases) or run from docker
 
 ```
-docker run -d -p 9233:9233 fffonion/tplink-plug-exporter
+docker run -d -p 9233:9233 rk295/tplink-tapo-exporter
 ```
 
 ### Usage
@@ -15,24 +15,27 @@ docker run -d -p 9233:9233 fffonion/tplink-plug-exporter
 Use the -h flag to see full usage:
 
 ```
-$ tplink-plug-exporter -h
-Usage of tplink-plug-exporter:
+$ tplink-tapo-exporter -h
+Usage of ./tplink-tapo-exporter:
   -metrics.listen-addr string
-        listen address for tplink-plug exporter (default ":9233")
+        listen address for tplink-tapo exporter (default ":9233")
 ```
 
-## Grafana dashboard
+<!-- WIP! -->
+<!-- ## Grafana dashboard
 
-Search for `Kasa` inside grafana or install from https://grafana.com/grafana/dashboards/10957
+Search for `Tapo` inside grafana or install from https://grafana.com/grafana/dashboards/10957
 
 ![img](https://grafana.com/api/dashboards/10957/images/6954/image)
+
+ -->
 
 ## Sample prometheus config
 
 ```yaml
-# scrape kasa devices
+# scrape tapo devices
 scrape_configs:
-  - job_name: 'kasa'
+  - job_name: 'tapo'
     static_configs:
     - targets:
       # IP of your smart plugs
@@ -48,8 +51,8 @@ scrape_configs:
         # IP of the exporter
         replacement: localhost:9233
 
-# scrape kasa_exporter itself
-  - job_name: 'kasa_exporter'
+# scrape tapo_exporter itself
+  - job_name: 'tapo_exporter'
     static_configs:
       - targets:
         # IP of the exporter
@@ -75,3 +78,4 @@ docker manifest push <image-name>:latest
 ## See also
 
 * Original reverse engineering work: https://github.com/softScheck/tplink-smartplug
+* Originally forked from the TPLink Kasa exporter: https://github.com/fffonion/tplink-plug-exporter
