@@ -32,7 +32,7 @@ github.com/prometheus/common/model
 github.com/prometheus/procfs
 github.com/prometheus/procfs/internal/fs
 github.com/prometheus/procfs/internal/util
-# github.com/rk295/tapo-go v0.0.8
+# github.com/rk295/tapo-go v0.0.9
 ## explicit; go 1.16
 github.com/rk295/tapo-go
 # github.com/sirupsen/logrus v1.7.0

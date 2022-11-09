@@ -48,9 +48,8 @@ const (
 	// environment variable name for configuring the client with a password.
 	TapoPasswordEnvName = "TAPO_PASSWORD"
 
-	// tapoSmartPlug is the string returned for "Type" if its a Smart plug with
-	// energy monitoring
-	tapoSmartPlug = "SMART.TAPOPLUG"
+	// tapoEnergyMonitoringPlug is type of plug which includes energy monitoring
+	tapoEnergyMonitoringPlug = "P110"
 )
 
 var (
@@ -178,7 +177,7 @@ func (d *Device) GetDeviceUsage() (*DeviceUsage, error) {
 
 // EmeterSupported returns true if the plug supports energy monitoring
 func (s *Status) EmeterSupported() bool {
-	return s.Type == tapoSmartPlug
+	return s.Model == tapoEnergyMonitoringPlug
 }
 
 //
