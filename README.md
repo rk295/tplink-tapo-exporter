@@ -1,16 +1,17 @@
-# tplink-plug-exporter
+# tplink-tapo-plug-exporter
 
-Export TP-Link Smart Plug metrics to grafana dashboard
+Export TP-Link Tapo Smart Plug metrics to grafana dashboard
 
 ## Install
 
-Download from [releases](https://github.com/fffonion/tplink-plug-exporter/releases) or run from docker
+Download from [releases](https://github.com/rk295/tplink-plug-exporter/releases) or run from docker
 
 ```
 docker run -d -p 9233:9233 fffonion/tplink-plug-exporter
 ```
 
 ### Usage
+
 Use the -h flag to see full usage:
 
 ```
@@ -23,6 +24,7 @@ Usage of tplink-plug-exporter:
 ## Grafana dashboard
 
 Search for `Kasa` inside grafana or install from https://grafana.com/grafana/dashboards/10957
+
 ![img](https://grafana.com/api/dashboards/10957/images/6954/image)
 
 ## Sample prometheus config
@@ -56,13 +58,15 @@ scrape_configs:
 
 ## Docker Build Instructions
 
-Build for both `arm64` and `amd64`:
+Build for both `arm64` and `amd64` :
+
 ```
 docker build -t <image-name>:latest-arm64 --platform linux/arm64 --build-arg GOARCH=arm64 .
 docker build -t <image-name>:latest-amd64 --platform linux/amd64 --build-arg GOARCH=amd64 .
 ```
 
 Merge them in one manifest:
+
 ```
 docker manifest create <image-name>:latest --amend <image-name>:latest-arm64 --amend <image-name>:latest-amd64
 docker manifest push <image-name>:latest
@@ -70,4 +74,4 @@ docker manifest push <image-name>:latest
 
 ## See also
 
-- Original reverse engineering work: https://github.com/softScheck/tplink-smartplug
+* Original reverse engineering work: https://github.com/softScheck/tplink-smartplug

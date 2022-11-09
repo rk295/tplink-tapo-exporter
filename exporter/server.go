@@ -2,18 +2,25 @@ package exporter
 
 import (
 	"net/http"
+	"os"
+
+	"github.com/rk295/tapo-go"
 
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 type HttpServer struct {
-	mux *http.ServeMux
+	mux          *http.ServeMux
+	tapoEmail    string
+	tapoPassword string
 }
 
 func NewHttpServer() *HttpServer {
 	s := &HttpServer{
-		mux: http.NewServeMux(),
+		mux:          http.NewServeMux(),
+		tapoEmail:    os.Getenv(tapo.TapoEmailEnvName),
+		tapoPassword: os.Getenv(tapo.TapoPasswordEnvName),
 	}
 	s.mux.HandleFunc("/metrics", promhttp.HandlerFor(prometheus.DefaultGatherer, promhttp.HandlerOpts{}).ServeHTTP)
 
@@ -36,7 +43,8 @@ func (s *HttpServer) ScrapeHandler(w http.ResponseWriter, r *http.Request) {
 
 	registry := prometheus.NewRegistry()
 	e := NewExporter(&ExporterTarget{
-		Host: target,
+		Host:       target,
+		TapoDevice: tapo.New(target, s.tapoEmail, s.tapoPassword),
 	})
 	registry.MustRegister(e)
 
